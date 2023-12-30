@@ -56,7 +56,7 @@ public class Player {
     }
 
     public void clearHand() {
-        hand = new ArrayList<>(0);
+        hand.clear();
     }
 
     public void printHand() {
