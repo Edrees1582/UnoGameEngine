@@ -28,7 +28,6 @@ public class DiscardingStandard {
                     discardCard(cardIndex);
                 else
                     throw new InvalidCardIndexException();
-                discardCard(cardIndex);
             }
         }
         else {
@@ -38,7 +37,6 @@ public class DiscardingStandard {
                 discardCard(cardIndex);
             else
                 throw new InvalidCardIndexException();
-            discardCard(cardIndex);
         }
     }
 
