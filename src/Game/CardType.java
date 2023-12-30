@@ -1,0 +1,5 @@
+package Game;
+
+public enum CardType {
+    NUMBERED, ACTION_REVERSE, ACTION_SKIP, ACTION_DRAW_TWO, WILD, WILD_DRAW_FOUR
+}
