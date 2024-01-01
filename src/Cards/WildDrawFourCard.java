@@ -1,26 +1,23 @@
 package Cards;
 
-import Game.Card;
-import Game.CardType;
-import Game.Color;
-import Game.GameData;
+
+import Game.Player.Player;
+import Game.Player.PlayersHandler;
 
 public class WildDrawFourCard extends Card {
-    private final GameData gameData = GameData.getInstance();
     public WildDrawFourCard() {
         super(Color.NO_COLOR, -1, 50, CardType.WILD_DRAW_FOUR);
     }
 
     @Override
-    public void applyAction() {
+    public void applyAction(PlayersHandler playersHandler, CardsHandler cardsHandler) {
+        Player nextPlayer = playersHandler.getNextPlayer();
         for (int i = 0; i < 4; i++) {
-            gameData.players.get(Math.abs((gameData.turn.value + gameData.dir.value) % gameData.players.size())).addCardToHand(gameData.deck.drawCard());
+            nextPlayer.addCardToHand(cardsHandler.getDeck().drawCard());
         }
-        gameData.turn.value = Math.abs((gameData.turn.value + gameData.dir.value) % gameData.players.size());
-
         WildCard wildCard = new WildCard();
-        wildCard.applyAction();
+        wildCard.applyAction(playersHandler, cardsHandler);
 
-        System.out.println("Game.Player[" + gameData.turn.value + "] WILD DRAW FOUR!");
+        System.out.println("Player[" + nextPlayer.getIndex() + "] WILD DRAW FOUR!");
     }
 }

@@ -1,13 +1,25 @@
 package Rules.Discard;
 
-import Game.Card;
-import Game.GameData;
+import Cards.Card;
+import Cards.CardsHandler;
+import Cards.Color;
+import Game.Player.PlayersHandler;
 
 public class DiscardRule1 {
-    private final GameData gameData = GameData.getInstance();
-    public void applyRule(int cardIndex) {
-        Card discardedCard = gameData.currentPlayer.getCard(cardIndex);
-        gameData.discardPile.add(discardedCard);
-        gameData.currentPlayer.discardCard(cardIndex);
+    public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler, int cardIndex) {
+        Card discardedCard = playersHandler.getCurrentPlayer().getCard(cardIndex);
+        cardsHandler.getDiscardPile().add(discardedCard);
+        playersHandler.getCurrentPlayer().discardCard(cardIndex);
+    }
+
+    public boolean canDiscard(CardsHandler cardsHandler, Card card) {
+        return card.getColor().equals(cardsHandler.getDeck().getCurrentColor()) || (card.getValue() == cardsHandler.getTopCard().getValue() && card.getType() == cardsHandler.getTopCard().getType()) || card.getColor() == Color.NO_COLOR;
+    }
+
+    public boolean haveDiscardableCards(PlayersHandler playersHandler, CardsHandler cardsHandler) {
+        for (Card card : playersHandler.getCurrentPlayer().getCards()) {
+            if (canDiscard(cardsHandler, card)) return true;
+        }
+        return false;
     }
 }

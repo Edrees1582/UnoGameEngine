@@ -1,13 +1,12 @@
 package Rules.CheckGameWinner;
 
-import Game.GameData;
-import Game.Player;
+import Game.Player.Player;
+import Game.Player.PlayersHandler;
 
 public class CheckGameWinner1 {
-    private final GameData gameData = GameData.getInstance();
-    public int applyRule() {
-        for (Player player : gameData.players) {
-            if (player.getGameScore() >= 500) {
+    public int applyRule(PlayersHandler playersHandler) {
+        for (Player player : playersHandler.getPlayers()) {
+            if (player.getGameScore() >= 100) {
                 return player.getIndex();
             }
         }

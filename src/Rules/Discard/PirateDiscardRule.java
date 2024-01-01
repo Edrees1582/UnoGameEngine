@@ -1,56 +1,57 @@
 package Rules.Discard;
 
-import Game.Card;
-import Game.GameData;
-import Game.Player;
+import Cards.Card;
+import Cards.CardsHandler;
 import Exceptions.InvalidPlayerIndex;
+import Game.Player.Player;
+import Game.Player.PlayersHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class PirateDiscardRule {
-    private final GameData gameData = GameData.getInstance();
-    public void applyRule(int cardIndex) {
-        Card discardedCard = gameData.currentPlayer.getCard(cardIndex);
-        gameData.discardPile.add(discardedCard);
-        gameData.currentPlayer.discardCard(cardIndex);
-        if (discardedCard.getValue() == 7 && gameData.currentPlayer.getHandSize() != 0) {
+    public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler, int cardIndex) {
+        Card discardedCard = playersHandler.getCurrentPlayer().getCard(cardIndex);
+        cardsHandler.getDiscardPile().add(discardedCard);
+        playersHandler.getCurrentPlayer().discardCard(cardIndex);
+        if (discardedCard.getValue() == 7 && playersHandler.getCurrentPlayer().getHandSize() != 0) {
             System.out.println("Choose a player to trade hands with (-1 to pass):");
-            for (Player player : gameData.players) {
-                if (player.getIndex() != gameData.currentPlayer.getIndex()) {
-                    System.out.println("Game.Player[" + player.getIndex() + "]'s hand size: " + player.getHandSize());
+            for (Player player : playersHandler.getPlayers()) {
+                if (player.getIndex() != playersHandler.getCurrentPlayer().getIndex()) {
+                    System.out.println("Player[" + player.getIndex() + "]'s hand size: " + player.getHandSize());
                 }
             }
             Scanner sc = new Scanner(System.in);
             int playerIndex = sc.nextInt();
             if (playerIndex == -1) System.out.println("Passed");
-            else if (playerIndex >= 0 && playerIndex < gameData.players.size()) {
-                Player tradedPlayer = gameData.players.get(playerIndex);
-                ArrayList<Card> tradedPlayerHand = tradedPlayer.getCards();
-                tradedPlayer.setHand(gameData.currentPlayer.getCards());
-                gameData.currentPlayer.setHand(tradedPlayerHand);
+            else if (playerIndex >= 0 && playerIndex < playersHandler.getPlayers().size()) {
+                Player tradedPlayer = playersHandler.getPlayers().get(playerIndex);
+                List<Card> tradedPlayerHand = tradedPlayer.getCards();
+                tradedPlayer.setHand(playersHandler.getCurrentPlayer().getCards());
+                playersHandler.getCurrentPlayer().setHand(tradedPlayerHand);
                 System.out.println("Your hand after trading:");
-                gameData.currentPlayer.printHand();
+                playersHandler.getCurrentPlayer().printHand();
             }
             else
                 throw new InvalidPlayerIndex();
         }
-        else if (discardedCard.getValue() == 0 && gameData.currentPlayer.getHandSize() != 0) {
-            ArrayList<ArrayList<Card>> hands = new ArrayList<>();
-            for (Player player : gameData.players) {
+        else if (discardedCard.getValue() == 0 && playersHandler.getCurrentPlayer().getHandSize() != 0) {
+            List<List<Card>> hands = new ArrayList<>();
+            for (Player player : playersHandler.getPlayers()) {
                 hands.add(player.getCards());
             }
 
-            Collections.rotate(hands, gameData.dir.value);
+            Collections.rotate(hands, playersHandler.getDir());
 
-            for (int i = 0; i < gameData.players.size(); i++) {
-               gameData.players.get(i).setHand(hands.get(i));
+            for (int i = 0; i < playersHandler.getPlayers().size(); i++) {
+               playersHandler.getPlayers().get(i).setHand(hands.get(i));
             }
 
-            if (gameData.dir.value == 1)
+            if (playersHandler.getDir() == 1)
                 System.out.println("All players passed their hands CLOCKWISE");
-            else if (gameData.dir.value == -1)
+            else if (playersHandler.getDir() == -1)
                 System.out.println("All players passed their hands COUNTER-CLOCKWISE");
         }
     }

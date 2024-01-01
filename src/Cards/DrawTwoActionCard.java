@@ -1,21 +1,20 @@
 package Cards;
 
-import Game.Card;
-import Game.CardType;
-import Game.Color;
-import Game.GameData;
+import Game.Player.Player;
+import Game.Player.PlayersHandler;
 
 public class DrawTwoActionCard extends Card {
-    private final GameData gameData = GameData.getInstance();
     public DrawTwoActionCard(Color color) {
         super(color, -1, 20, CardType.ACTION_DRAW_TWO);
     }
 
     @Override
-    public void applyAction() {
+    public void applyAction(PlayersHandler playersHandler, CardsHandler cardsHandler) {
+        Player nextPlayer = playersHandler.getNextPlayer();
         for (int i = 0; i < 2; i++) {
-            gameData.players.get(Math.abs((gameData.turn.value + gameData.dir.value) % gameData.players.size())).addCardToHand(gameData.deck.drawCard());
+            nextPlayer.addCardToHand(cardsHandler.getDeck().drawCard());
         }
-        System.out.println("Game.Player[" + (gameData.currentPlayer.getIndex() + 1) + "] DRAW TWO!");
+        System.out.println("Player[" + playersHandler.getCurrentPlayer().getIndex() + "] DRAW TWO!");
+        playersHandler.getPreviousPlayer();
     }
 }

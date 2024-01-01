@@ -1,14 +1,14 @@
 package Rules.NoValidCardPenalty;
 
-import Game.Card;
-import Game.GameData;
+import Cards.Card;
+import Cards.CardsHandler;
+import Game.Player.PlayersHandler;
 
 public class NoValidCardPenaltyRule1 {
-    private final GameData gameData = GameData.getInstance();
-    public void applyRule(int numberOfCardsToDraw) {
-        for (int i = 0; i < numberOfCardsToDraw; i++) {
-            Card card = gameData.deck.drawCard();
-            gameData.currentPlayer.addCardToHand(card);
+    public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler) {
+        for (int i = 0; i < 1; i++) {
+            Card card = cardsHandler.getDeck().drawCard();
+            playersHandler.getCurrentPlayer().addCardToHand(card);
         }
     }
 }

@@ -1,8 +1,6 @@
 package Cards;
 
-import Game.Card;
-import Game.CardType;
-import Game.Color;
+import Game.Player.PlayersHandler;
 
 public class NumberedCard extends Card {
     public NumberedCard(Color color, int value) {
@@ -10,5 +8,5 @@ public class NumberedCard extends Card {
     }
 
     @Override
-    public void applyAction() {}
+    public void applyAction(PlayersHandler playersHandler, CardsHandler cardsHandler) {}
 }

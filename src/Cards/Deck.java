@@ -1,19 +1,22 @@
-package Game;
+package Cards;
 
-import Cards.*;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Stack;
 
 public class Deck {
-    private final ArrayList<Card> deck;
+    private final Stack<Card> deck;
+    private final Color[] colors;
     private Color currentColor;
 
     public Deck() {
-        deck = new ArrayList<>();
-        Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
+        deck = new Stack<>();
+        colors = new Color[]{Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
+        initializeDeck();
+    }
 
+    private void initializeDeck() {
+        deck.clear();
         for (Color color : colors) {
             deck.add(new NumberedCard(color, 0));
             for (int i = 1; i <= 9; i++) {
@@ -33,6 +36,8 @@ public class Deck {
             deck.add(new WildDrawFourCard());
         }
 
+        Collections.shuffle(deck, new Random(System.currentTimeMillis()));
+        Collections.shuffle(deck, new Random(System.currentTimeMillis()));
         Collections.shuffle(deck, new Random(System.currentTimeMillis()));
     }
 

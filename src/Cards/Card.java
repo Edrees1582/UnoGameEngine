@@ -1,4 +1,6 @@
-package Game;
+package Cards;
+
+import Game.Player.PlayersHandler;
 
 public abstract class Card {
     private Color color;
@@ -35,6 +37,5 @@ public abstract class Card {
             System.out.println(color + ", " + type);
     }
 
-    public abstract void applyAction();
-
+    public abstract void applyAction(PlayersHandler playersHandler, CardsHandler cardsHandler);
 }

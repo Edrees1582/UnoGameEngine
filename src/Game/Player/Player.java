@@ -1,12 +1,16 @@
-package Game;
+package Game.Player;
+
+import Cards.Card;
+import Cards.CardType;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private final int index;
     private int roundScore;
     private int gameScore;
-    private ArrayList<Card> hand;
+    private List<Card> hand;
 
     public Player(int index) {
         this.index = index;
@@ -36,7 +40,7 @@ public class Player {
     public int getGameScore() {
         return gameScore;
     }
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return hand;
     }
     public void addCardToHand(Card card) {
@@ -53,7 +57,7 @@ public class Player {
         return hand.get(cardIndex);
     }
 
-    public void setHand(ArrayList<Card> hand) {
+    public void setHand(List<Card> hand) {
         this.hand = hand;
     }
 

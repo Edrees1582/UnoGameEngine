@@ -1,15 +1,15 @@
 package Rules.Deal;
 
-import Game.Card;
-import Game.GameData;
-import Game.Player;
+import Cards.Card;
+import Cards.CardsHandler;
+import Game.Player.Player;
+import Game.Player.PlayersHandler;
 
 public class DealRule1 {
-    private final GameData gameData = GameData.getInstance();
-    public void applyRule(int numberOfCards) {
+    public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler, int numberOfCards) {
         for (int i = 0; i < numberOfCards; i++) {
-            for (Player player : gameData.players) {
-                Card card = gameData.deck.drawCard();
+            for (Player player : playersHandler.getPlayers()) {
+                Card card = cardsHandler.getDeck().drawCard();
                 player.addCardToHand(card);
             }
         }
