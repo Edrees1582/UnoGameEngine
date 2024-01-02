@@ -2,7 +2,7 @@ package Rules.NoValidCardPenalty;
 
 import Cards.Card;
 import Cards.CardsHandler;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public class NoValidCardPenaltyRule1 {
     public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler) {

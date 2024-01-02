@@ -1,6 +1,6 @@
 package Cards;
 
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public abstract class Card {
     private Color color;
@@ -30,11 +30,17 @@ public abstract class Card {
     public void setColor(Color color) {
         this.color = color;
     }
-    public void printCard() {
+    public void printCard(int cardIndex) {
         if (type == CardType.NUMBERED)
-            System.out.println(color + " (" + value + ")");
+            if (cardIndex == -1)
+                System.out.println("Top card: " + color + color.getColorName() + " (" + value + ")" + Color.NO_COLOR);
+            else
+                System.out.print(color + "" + cardIndex + ": " + color.getColorName() + " (" + value + ")" + Color.NO_COLOR);
         else
-            System.out.println(color + ", " + type);
+            if (cardIndex == -1)
+                System.out.println("Top card: " + color + color.getColorName() + ", " + type + Color.NO_COLOR);
+            else
+                System.out.print(color + "" + cardIndex + ": " + color.getColorName() + ", " + type + Color.NO_COLOR);
     }
 
     public abstract void applyAction(PlayersHandler playersHandler, CardsHandler cardsHandler);

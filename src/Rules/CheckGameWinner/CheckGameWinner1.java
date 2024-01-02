@@ -1,7 +1,7 @@
 package Rules.CheckGameWinner;
 
-import Game.Player.Player;
-import Game.Player.PlayersHandler;
+import Player.Player;
+import Player.PlayersHandler;
 
 public class CheckGameWinner1 {
     public int applyRule(PlayersHandler playersHandler) {

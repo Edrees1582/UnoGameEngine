@@ -2,8 +2,8 @@ package Rules.Deal;
 
 import Cards.Card;
 import Cards.CardsHandler;
-import Game.Player.Player;
-import Game.Player.PlayersHandler;
+import Player.Player;
+import Player.PlayersHandler;
 
 public class DealRule1 {
     public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler, int numberOfCards) {

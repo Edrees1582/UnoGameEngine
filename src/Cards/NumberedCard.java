@@ -1,6 +1,6 @@
 package Cards;
 
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public class NumberedCard extends Card {
     public NumberedCard(Color color, int value) {

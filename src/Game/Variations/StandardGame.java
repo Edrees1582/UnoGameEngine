@@ -1,15 +1,14 @@
 package Game.Variations;
 
 import Cards.Card;
-import Cards.CardType;
 import Cards.CardsHandler;
 import Cards.Color;
 import Exceptions.InvalidCardIndexException;
 import Exceptions.InvalidDiscardIndex;
 import Game.Game;
 import Game.GameRules;
-import Game.Player.Player;
-import Game.Player.PlayersHandler;
+import Player.Player;
+import Player.PlayersHandler;
 
 import java.util.Scanner;
 
@@ -37,12 +36,9 @@ public class StandardGame extends Game {
                 currentPlayer.printHand();
 
                 Card topCard = cardsHandler.getTopCard();
-                if (topCard.getType() == CardType.NUMBERED)
-                    System.out.println("Top card: " + topCard.getColor() + " (" + topCard.getValue() + ")");
-                else
-                    System.out.println("Top card: " + topCard.getColor() + ", " + topCard.getType());
+                topCard.printCard(-1);
 
-                System.out.println("Current color: " + cardsHandler.getDeck().getCurrentColor());
+                cardsHandler.getDeck().printCurrentColor();
 
                 printDirection();
 

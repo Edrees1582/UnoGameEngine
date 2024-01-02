@@ -1,17 +1,22 @@
 package Cards;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Stack;
 
 public class Deck {
     private final Stack<Card> deck;
-    private final Color[] colors;
+    private final List<Color> colors;
     private Color currentColor;
 
     public Deck() {
         deck = new Stack<>();
-        colors = new Color[]{Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW};
+        colors = new ArrayList<>();
+        for (int i = 0; i < Color.values().length - 2; i++) {
+            colors.add(Color.values()[i]);
+        }
         initializeDeck();
     }
 
@@ -58,5 +63,9 @@ public class Deck {
 
     public Color getCurrentColor() {
         return currentColor;
+    }
+
+    public void printCurrentColor() {
+        System.out.println("Current color: " + currentColor + currentColor.getColorName() + Color.NO_COLOR);
     }
 }

@@ -2,7 +2,7 @@ package Rules;
 
 import Cards.CardsHandler;
 import Game.GameRules;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 import Rules.Discard.PirateDiscardRule;
 
 public class PirateRules extends StandardRules implements GameRules {

@@ -1,7 +1,6 @@
-package Game.Player;
+package Player;
 
 import Cards.Card;
-import Cards.CardType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,15 +67,11 @@ public class Player {
     public void printHand() {
         for (int i = 0; i < hand.size() - 1; i++) {
             Card card = hand.get(i);
-            if (card.getType() == CardType.NUMBERED)
-                System.out.print(i + ": " + card.getColor() + " (" + card.getValue() + ")" + " | ");
-            else
-                System.out.print(i + ": " + card.getColor() + ", " + card.getType() + " | ");
+            card.printCard(i);
+            System.out.print(" | ");
         }
         Card card = hand.get(hand.size() - 1);
-        if (card.getType() == CardType.NUMBERED)
-            System.out.println((hand.size() - 1) + ": " + card.getColor() + " (" + card.getValue() + ")");
-        else
-            System.out.println((hand.size() - 1) + ": " + card.getColor() + ", " + card.getType());
+        card.printCard(hand.size() - 1);
+        System.out.println();
     }
 }

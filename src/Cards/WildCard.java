@@ -1,7 +1,7 @@
 package Cards;
 
 import Exceptions.InvalidColorIndexException;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 import java.util.Scanner;
 
@@ -12,12 +12,11 @@ public class WildCard extends Card {
 
     @Override
     public void applyAction(PlayersHandler playersHandler, CardsHandler cardsHandler) {
-        System.out.println("Current color: " + cardsHandler.getDeck().getCurrentColor());
-        System.out.println("Choose a color: ");
+        cardsHandler.getDeck().printCurrentColor();
         for (int i = 0; i < Color.values().length - 2; i++)
-            System.out.print(i + ": " + Color.values()[i] + " | ");
+            System.out.print(Color.values()[i] + "" + i + ": " + Color.values()[i].getColorName() + Color.NO_COLOR + " | ");
 
-        System.out.println((Color.values().length - 2) + ": " + Color.values()[Color.values().length - 2]);
+        System.out.println((Color.values()[Color.values().length - 2] + "" + (Color.values().length - 2) + ": " + Color.values()[Color.values().length - 2].getColorName() + Color.NO_COLOR));
         Scanner sc = new Scanner(System.in);
         int colorIndex = sc.nextInt();
         if (colorIndex >= 0 && colorIndex < Color.values().length - 1)

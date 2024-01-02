@@ -3,7 +3,7 @@ package Rules.Discard;
 import Cards.Card;
 import Cards.CardsHandler;
 import Cards.Color;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public class DiscardRule1 {
     public void applyRule(PlayersHandler playersHandler, CardsHandler cardsHandler, int cardIndex) {

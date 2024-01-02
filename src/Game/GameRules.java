@@ -2,7 +2,7 @@ package Game;
 
 import Cards.Card;
 import Cards.CardsHandler;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public interface GameRules {
     void dealCards(PlayersHandler playersHandler, CardsHandler cardsHandler, int numberOfCards);

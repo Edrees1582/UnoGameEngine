@@ -1,7 +1,7 @@
 package Game;
 
 import Cards.CardsHandler;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public abstract class Game {
     protected PlayersHandler playersHandler;

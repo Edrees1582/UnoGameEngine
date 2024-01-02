@@ -1,7 +1,7 @@
 package Cards;
 
-import Game.Player.Player;
-import Game.Player.PlayersHandler;
+import Player.Player;
+import Player.PlayersHandler;
 
 public class DrawTwoActionCard extends Card {
     public DrawTwoActionCard(Color color) {

@@ -1,6 +1,6 @@
 package Cards;
 
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 
 public class ReverseActionCard extends Card {
     public ReverseActionCard(Color color) {

@@ -3,8 +3,8 @@ package Rules.Discard;
 import Cards.Card;
 import Cards.CardsHandler;
 import Exceptions.InvalidPlayerIndex;
-import Game.Player.Player;
-import Game.Player.PlayersHandler;
+import Player.Player;
+import Player.PlayersHandler;
 
 import java.util.ArrayList;
 import java.util.Collections;

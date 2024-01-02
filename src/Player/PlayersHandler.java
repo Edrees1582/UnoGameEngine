@@ -1,4 +1,4 @@
-package Game.Player;
+package Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ public class PlayersHandler {
     private int turn;
     private int dir;
 
+    public static PlayersHandler getInstance() {
+        if (instance == null) instance = new PlayersHandler();
+        return instance;
+    }
+
     private PlayersHandler() {
         players = new ArrayList<>();
         currentPlayer = null;
         turn = 0;
         dir = 1;
-    }
-
-    public static PlayersHandler getInstance() {
-        if (instance == null) instance = new PlayersHandler();
-        return instance;
     }
 
     public List<Player> getPlayers() {

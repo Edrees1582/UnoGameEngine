@@ -3,7 +3,7 @@ package Rules;
 import Cards.Card;
 import Cards.CardsHandler;
 import Game.GameRules;
-import Game.Player.PlayersHandler;
+import Player.PlayersHandler;
 import Rules.CheckGameWinner.CheckGameWinner1;
 import Rules.CheckRoundWinner.CheckRoundWinner1;
 import Rules.Deal.DealRule1;
