@@ -1,11 +1,11 @@
 package Game;
 
-import Game.Variations.PirateGame;
-import Rules.PirateRules;
+import Game.Variations.*;
+import Rules.*;
 
 public class GameDriver {
     public static void main(String[] args) {
-        PirateGame pirateGame = new PirateGame(2, new PirateRules());
-        pirateGame.play();
+        StandardGame standardGameGame = new StandardGame(2, new StandardRules());
+        standardGameGame.play();
     }
 }

@@ -13,7 +13,7 @@ public class DiscardRule1 {
     }
 
     public boolean canDiscard(CardsHandler cardsHandler, Card card) {
-        return card.getColor().equals(cardsHandler.getDeck().getCurrentColor()) || (card.getValue() == cardsHandler.getTopCard().getValue() && card.getType() == cardsHandler.getTopCard().getType()) || card.getColor() == Color.NO_COLOR;
+        return card.getColor().getColorName().equals(cardsHandler.getDeck().getCurrentColor().getColorName()) || (card.getValue() == cardsHandler.getTopCard().getValue() && card.getType() == cardsHandler.getTopCard().getType()) || card.getColor() == Color.NO_COLOR;
     }
 
     public boolean haveDiscardableCards(PlayersHandler playersHandler, CardsHandler cardsHandler) {
