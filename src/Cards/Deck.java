@@ -1,5 +1,7 @@
 package Cards;
 
+import Exceptions.EmptyDeckException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -48,12 +50,11 @@ public class Deck {
 
     public Card drawCard() {
         if (!deck.isEmpty()) {
-            Card card = deck.get(0);
-            deck.remove(0);
+            Card card = deck.peek();
+            deck.pop();
             return card;
         } else {
-            // Handle when the deck is empty
-            return null;
+            throw new EmptyDeckException();
         }
     }
 
